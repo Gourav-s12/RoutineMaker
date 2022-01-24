@@ -1,0 +1,110 @@
+Add the following api pages:
+-------------------------------------------------------------------------------------------------------------------------------------------------
+status.json
+Working: Returns a json object.
+Returns: A json obj where obj.status=200 and obj.message="API Server is running properly"
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+login.json?email=deba@gmail.com&password=ok
+Working: Checks if email and password is ok using mysql and returns a json object. Also, creates a session with given email_id if success.
+Returns: A json obj where, obj.status=200 and obj.message="Login Suceess" if login is successful. obj.status=401 and obj.message will contain info about error if login fail.
+
+register.json?email=deba@gmail.com&password=ok&name=Deba
+Working: Registers the user using mysql and returns a json object. 
+Returns: A json obj where, obj.status=200 and obj.message="Registration Suceess" if reg is successful. obj.status=401 and obj.message will contain info about error if reg fail.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+getUserInfo.json
+Working: Returns a json object with user name of the user logged in. Returns error json object if user is not logged in.
+Returns:  A json obj where, obj.status=200 and obj.message="name of user" of user if successful. obj.status=401 and obj.message will contain info about error. Errors may be user is not logged in.. etc
+
+getTimeTables.json
+Working: Returns a json object with a list of time tables created by the user. Returns error json object if user is not logged in.
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully retrievd" and obj.name=user_name and obj.list=[{name:"Time Table 1",institute:"CCP"},{name:"Time Table 2",institute:"CTS"}....] of user if successful. If error then, obj.status=401 and obj.message will contain info about error.
+
+createTimeTable.json?time_schedule_name=TimeTable1
+Working: Execute the code simlar to initialize_TT_demo.sql with the time table name changed to given parameter value. (Call me for details)
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully Created" if successful. If error then, obj.status=401 and obj.message will contain info about error.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+getTimeTable.json?time_schedule_name=TimeTable1
+Working: Returns a json object with the data related with given timetable.
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully retrievd" and obj.time_schedule_name, obj.ins_name, obj.start_time, obj.slot_count, obj.slot_duration_mins, obj.recess_duration of given timetable if successful. If error then, obj.status=401 and obj.message will contain info about error.
+
+updateTimeTable.json?time_schedule_name=TimeTable1&ins_name=A&start_time=10&slot_count=4&slot_duration_mins=30&recess_duration=30
+Working: Update the timetable with given time_schedule_name
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully updated" if successful. If error then, obj.status=401 and obj.message will contain info about error.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+getWorkingDays.json?time_schedule_name=TimeTable1
+Working: Returns a json object with the working day data related with given timetable.
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully retrievd" and obj.list=[{"MON","full"},{"TUES","half"}...}] of given timetable if successful. If error then, obj.status=401 and obj.message will contain info about error.
+
+updateWorkingDay.json?time_schedule_name=TimeTable1&days_name=MON&full_half=full
+Working: Update the day with given days_name in given timetable name
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully updated" if successful. If error then, obj.status=401 and obj.message will contain info about error.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+getSems.json?time_schedule_name=TimeTable1
+Working: Returns a json object with the sem data related with given timetable.
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully retrievd" and obj.list=["IV","VI"...] of given timetable if successful. If error then, obj.status=401 and obj.message will contain info about error.
+
+updateSem.json?time_schedule_name=TimeTable1&list=["IV","VI"...]
+Working: Delete all Sem rows of given time table and add the new ones in list.
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully updated" if successful. If error then, obj.status=401 and obj.message will contain info about error.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+getSubjects.json?time_schedule_name=TimeTable1
+Working: Returns a json object with the subject data related with given timetable.
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully retrievd" and obj.list=[{sub_id:1,sub_name:"Java",fk_sem_no:"IV",hrs_per_week:5,lab_or_not:true,min_slot_length:1,slot_pref:"..Slot Pref.."},{sub_id:1,sub_name:"Java",fk_sem_no:"IV",hrs_per_week:5,lab_or_not:true,min_slot_length:1,slot_pref:"..Slot Pref.."}....] of given timetable if successful. If error then, obj.status=401 and obj.message will contain info about error.
+
+addSubject.json?time_schedule_name=TimeTable1&sub_name="Java"&fk_sem_no=IV&hrs_per_week=5&lab_or_not=true&min_slot_length=1&slot_pref:"...Slot Pref..."
+Working: Adds a new subject to subject table with given time table name. INSERT the new row with sub_id = null so that the subject gets auto incremented.
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully added" if successful. If error then, obj.status=401 and obj.message will contain info about error.
+
+updateSubject.json?time_schedule_name=TimeTable1&sub_id=1&sub_name="Java"&fk_sem_no=IV&hrs_per_week=5&lab_or_not=true&min_slot_length=1&slot_pref:"...Slot Pref..."
+Working: Update the given sub_id in given time_schedule_name.
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully updated" if successful. If error then, obj.status=401 and obj.message will contain info about error.
+
+deleteSubject.json?time_schedule_name=TimeTable1&sub_id=1
+Working: Remove the given sub_id in given time_schedule_name. Before removing, remove all subject teacher relation associated with this sub_id in sub_teacher.
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully removed" if successful. If error then, obj.status=401 and obj.message will contain info about error.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+getTeachers.json?time_schedule_name=TimeTable1
+Working: Returns a json object with the teacher data related with given timetable.
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully retrievd" and obj.list=[{tr_id:1,tr_name:"BR",max_continuois_period:4,time_matrix:"..Time Matirx.."},{tr_id:2,tr_name:"SH",max_continuois_period:4,time_matrix:"..Time Matirx.."}....] of given timetable if successful. If error then, obj.status=401 and obj.message will contain info about error.
+
+addTeacher.json?time_schedule_name=TimeTable1&tr_name="BR"&max_continuois_period=4&time_matrix="..Time Matirx.."
+Working: Adds a new teacher to teacher table with given time table name. INSERT the new row with tr_id = null so that the tr_id gets auto incremented.
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully added" if successful. If error then, obj.status=401 and obj.message will contain info about error.
+
+updateTeacher.json?time_schedule_name=TimeTable1&tr_id=1&tr_name="BR"&max_continuois_period=4&time_matrix="..Time Matirx.."
+Working: Update the given tr_id in given time_schedule_name.
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully updated" if successful. If error then, obj.status=401 and obj.message will contain info about error.
+
+deleteTeacher.json?time_schedule_name=TimeTable1&tr_id=1
+Working: Remove the given tr_id in given time_schedule_name. Before removing, remove all subject teacher relation associated with this tr_id in sub_teacher.
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully removed" if successful. If error then, obj.status=401 and obj.message will contain info about error.
+
+getSubTeach.json?time_schedule_name=TimeTable1
+Working: Returns a json object with the sem data related with given timetable.
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully retrievd" and obj.list=[[1,2][2,1],[1,3]] of given timetable if successful. If error then, obj.status=401 and obj.message will contain info about error.
+
+updateSubTeach.json?time_schedule_name=TimeTable1&list=[[1,2][2,1],[1,3]]
+Working: Delete all SubTeach rows of given time table and add the new ones in list.
+Returns:  A json obj where, obj.status=200 and obj.message="Successfully updated" if successful. If error then, obj.status=401 and obj.message will contain info about error.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+generateTimeTable.json?time_schedule_name=TimeTable1
+Working: Generates a timetable using heuristic greedy algorithm.
+Returns:  A json obj where, obj.result=an 4d array of form [routine no][sem no][day no][slot no]
+-------------------------------------------------------------------------------------------------------------------------------------------------
