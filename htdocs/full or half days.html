@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Routine Genaretion</title><link rel="stylesheet" type="text/css" href="style.css">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script >
+      function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+  }
+  function getValue(data){
+
+for (var i = 0; i < 3; i++) {
+    if (document.getElementsByName(data)[i].checked) {
+        // do whatever you want with the checked radio
+        console.log(document.getElementsByName(data)[i].value);
+        return (document.getElementsByName(data)[i].value);
+    }
+}
+  }
+  function preday(){
+    var timet = getUrlVars()["time_schedule_name"];
+    window.location="/institute%20details.html?time_schedule_name="+timet+"";
+  }
+    function nextday(){
+      var timet = getUrlVars()["time_schedule_name"];
+      //getValue("r11")
+      var resultmon = getValue("rl1");
+      var resulttue = getValue("rl2");
+      var resultwen = getValue("rl3");
+      var resultthu = getValue("rl4");
+      var resultfri = getValue("rl5");
+      var resultsat = getValue("rl6");
+      var resultsun = getValue("rl7");
+      timet.replace("#",'');
+      getday(timet,"MON",resultmon);
+      getday(timet,"TUE",resulttue);
+      getday(timet,"WED",resultwen);
+      getday(timet,"THU",resultthu);
+      getday(timet,"FRI",resultfri);
+      getday(timet,"SAT",resultsat);
+      getday(timet,"SUN",resultsun);
+      setTimeout(() => { 
+      if(document.getElementById("writertt2").innerHTML!="try again!" ){
+        console.log("Successfully updated!!!");
+      window.location="/sem.html?time_schedule_name="+timet+"";
+      //document.getElementsByName("rll").value
+          }
+          console.log("done"); }, 2000);
+    }
+    function getday(tt,day,fhn){
+      var parameters ='?time_schedule_name='+tt+'&days_name='+day+'&full_half='+fhn  ;
+      console.log(fhn);
+      $.ajax( "http://localhost:8086/api/updateWorkingDay.json"+parameters )
+      .done(function(data) {
+      if(data.status == 200 ){
+          }else if(document.getElementById("writertt2").innerHTML=="try again!"){
+
+          }else{
+            document.getElementById("writertt2").innerHTML="try again!";
+          }
+  })
+  .fail(function(jqXHR, textStatus, errorThrown) {
+    console.log( textStatus );
+  })   
+}
+  function gotIt(data){
+    var result=false;
+    if(data=="full"){
+      result=0;
+    }else if(data=="half"){
+       result=1;
+    }else if(data=="none"){
+       result=2;
+    }else{
+      document.getElementById("writertt21").innerHTML="try again!";
+    }
+    return result;
+  }
+    
+    function myday(){
+      var timet = getUrlVars()["time_schedule_name"];
+       var parameters ='?time_schedule_name='+timet ;
+      $.ajax( "http://localhost:8086/api/getWorkingDays.json"+parameters )
+      .done(function(data) {
+      if(data.status == 200 ){
+        
+          var getdayfhn = [];
+          var getdayname = [];
+          var dayarr =[5,1,6,7,4,2,3];
+          var j=0;
+          for(var i=0;i<7;i++){
+          getdayfhn[getdayfhn.length] = data.message[i].full_half;
+           getdayname[getdayname.length] = data.message[i].days_name;
+            }
+            console.log(getdayfhn);
+          console.log(getdayname);
+             for(var i=0;i<7;i++){
+              var k=dayarr[i];
+             // document.MON.r11.value="full";
+              //document.getElementById("_".concat(k+''+j)).checked =true;//gotIt(j,getdayfhn[k]);
+              //document.getElementById(i+j).checked =gotIt(j,getdayfhn[i-1]);
+              //document.getdayname[i-1].r11.value=getdayfhn[i-1];
+               j=gotIt(getdayfhn[i]);
+              //document.getElementsByName("rll")[0].checked=true;
+              document.getElementsByName("rl"+k)[j].checked=true;
+            
+            }
+
+          }else{
+            document.getElementById("writertt2").innerHTML="enter and try again";
+          }
+  })
+  .fail(function(jqXHR, textStatus, errorThrown) {
+    console.log( textStatus );
+  })   
+
+    }
+
+
+  </script>
+   		<link rel="stylesheet" type="text/css" href="style.css">
+ 		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+ 		<meta charset="utf-8">
+ 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: #eee;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+ul.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}   
+      table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+  table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  position: relative;
+  left: 200px;
+}
+th, td {text-decoration-color: #3377ff; 
+  padding: 5px;
+  text-align: left;
+}tr:hover {background-color:#9900ff;}
+
+</style>
+</head>
+<body onload="myday()">
+<div class="container">
+    <header>
+            <div class="logo">ROUTINE GENARETION</div>
+            <nav >
+                <ul style="float: right;">
+                    <li><a href="RG Home.html" class="Active">Home</a></li>
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
+        </header><script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+ 		<script>
+ 			$(document).ready(function(){
+ 				$('.menu-toggle').click(function(){
+ 					$('nav').toggleClass('active')
+ 				})
+ 			})
+ 		</script><div class="boddy">
+
+        <br><br><h1><center>Generate Your Routine</center></h1><ul class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li>Setup</li>
+</ul>
+
+<table style="width:60% ;text-align: center">
+<tr>
+    <th style="text-align: center" >Day name</th>
+    <th style="text-align: center">Full</th>
+     <th style="text-align: center">Half</th>
+      <th style="text-align: center">None</th>
+  </tr>
+  <tr><td style="text-align: center">Monday </td><td style="text-align: center"><input type=radio value="full" name="rl1" id="11"></td><td style="text-align: center"><input type=radio value="half" name="rl1" id="12"></td><td style="text-align: center"><input type=radio value="none" name="rl1" id="13" checked></td>
+  </tr>
+   <tr><td style="text-align: center">Tuesday </td><td style="text-align: center"><input type=radio value="full" name="rl2" id="21"></td><td style="text-align: center"><input type=radio value="half" name="rl2" id="22"></td><td style="text-align: center"><input type=radio value="none" name="rl2" id="23" checked></td>
+
+  </tr> <tr><td style="text-align: center">Wednesday </td><td style="text-align: center"><input type=radio value="full" name="rl3" id="31"></td><td style="text-align: center"><input type=radio value="half" name="rl3" id="32"></td><td style="text-align: center"><input type=radio value="none" name="rl3" id="33" checked></td>
+
+  </tr><tr><td style="text-align: center">Thursday </td><td style="text-align: center"><input type=radio value="full" name="rl4" id="41"></td><td style="text-align: center"><input type=radio value="half" name="rl4" id="42"></td><td style="text-align: center"><input type=radio value="none" name="rl4" id="43" checked></td>
+
+  </tr><tr><td style="text-align: center">Friday  </td><td style="text-align: center"><input type=radio value="full" name="rl5" id="51"></td><td style="text-align: center"><input type=radio value="half" name="rl5" id="52"></td><td style="text-align: center"><input type=radio value="none" name="rl5" id="53" checked></td>
+
+  </tr><tr><td style="text-align: center">Saturday</td><td style="text-align: center"><input type=radio value="full" name="rl6" id="61"></td><td style="text-align: center"><input type=radio value="half" name="rl6" id="62"></td><td style="text-align: center"><input type=radio value="none" name="rl6" id="63" checked></td>
+
+  </tr><tr><td style="text-align: center"> Sunday </td><td style="text-align: center"> <input type=radio value="full" name="rl7" id="71"></td><td style="text-align: center"><input type=radio value="half" name="rl7" id="72"></td><td style="text-align: center"><input type=radio value="none" name="rl7" id="73" checked></td>
+  </tr>
+</table><br><br><br>
+    <li><button type="button" class="btn btn-light" onclick="preday()" style="position: relative;">Back</button>
+    </li>
+    <li><button type="button" class="btn btn-success" onclick="nextday()" style="position: relative; left:900px;">Next</button>
+    </li>
+
+   <center> <div id="writertt2"></div></center>
+   <center><div id="writertt21"></div></center>
+   
+</body>
+</html>

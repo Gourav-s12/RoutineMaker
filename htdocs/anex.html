@@ -1,0 +1,210 @@
+<style>
+#bubblebox{ width:650px; height:250px; margin:50px auto; border:1px solid #AAA; }
+#bubbles{ width:auto; margin:0px auto; text-align:center; }
+#bubbles > div{ display:inline-block; width:10px; height:10px; margin:24px 10px 0px 10px; background:rgba(0,0,0,.1); text-align:center; border:2px solid #999; border-radius:100%; font-size:17px; text-decoration:none; transition: background 0.3s linear 0s; cursor:pointer; }
+#bubblecontent{ margin:0px auto; transition:opacity 0.3s linear 0s; font-family: Arial;}
+#bubblecontent > h2{ text-align:center; color:#7EA800; }
+#bubblecontent > p{ font-size:17px; line-height:1.5em; padding:20px 50px; color:#777; }
+</style>
+<script>
+// This simple function returns object reference for elements by ID
+function _(x){return document.getElementById(x);}
+// Variables for bubble array, bubble index, and the setInterval() variable
+var ba, bi=0, intrvl;
+// bca - Bubble Content Array. Put your content here.
+var bca = [
+    '<h2>Heading Number 1</h2><p>Content for section 1</p>',
+	'<h2>Heading Number 2</h2><p>Content for section 2</p>',
+	'<h2>Heading Number 3</h2><p>Content for section 3</p>',
+	'<h2>Heading Number 4</h2><p>Content for section 4</p>'
+];
+// This function is triggered by the bubbleSlide() function below
+function bubbles(bi){
+	// Fade-out the content
+	_("bubblecontent").style.opacity = 0;
+	// Loop over the bubbles and change all of their background color
+	for(var i=0; i < ba.length; i++){
+		ba[i].style.background = "rgba(0,0,0,.1)";
+	}
+	// Change the target bubble background to be darker than the rest
+	ba[bi].style.background = "#999";
+	// Stall the bubble and content changing for just 300ms
+	setTimeout(function(){
+		// Change the content
+		_("bubblecontent").innerHTML = bca[bi];
+		// Fade-in the content
+		_("bubblecontent").style.opacity = 1;
+	}, 300);
+}
+// This function is set to run every 5 seconds(5000ms)
+function bubbleSlide(){
+	bi++; // Increment the bubble index number
+	// If bubble index number is equal to the amount of total bubbles
+	if(bi == ba.length){
+		bi = 0; // Reset the bubble index to 0 so it loops back at the beginning
+	}
+	// Make the bubbles() function above run
+	bubbles(bi);
+}
+// Start the application up when document is ready
+window.addEventListener("load", function(){
+	// Get the bubbles array
+	ba = _("bubbles").children;
+	// Set the interval timing for the slideshow speed
+	intrvl = setInterval(bubbleSlide, 5000);
+});
+</script>
+<div id="bubblebox">
+  <div id="bubbles">
+    <div onclick="bubbles(0); clearInterval(intrvl);" style="background:#999;"></div>
+    <div onclick="bubbles(1); clearInterval(intrvl);"></div>
+    <div onclick="bubbles(2); clearInterval(intrvl);"></div>
+    <div onclick="bubbles(3); clearInterval(intrvl);"></div>
+  </div>
+  <div id="bubblecontent">
+    <h2>Heading Number 1</h2>
+    <p>Content for section 1</p>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" type="text/css" href="styyle.css">
+     <script type="text/javascript" src="abhik.js"></script>
+</head>
+<body>
+<!--main div-->
+
+<div class="connectPanel row overflow-auto h-100 d-flex align-items-center justify-content-center p-5">
+  <div id="leftPanel" class="d-flex align-items-center justify-content-center">
+    <div class="text-center">
+      <h1><p class=" awesome">Welcome </p></h1>
+      <h3>To start use email-id and password!</h3><br><br><p class="padd">
+      <button class="btn-connect btn-connect-navigate signin active" onclick="changeForm(this)">Sign in</button>
+      <button class="btn-connect btn-connect-navigate signup" onclick="changeForm(this)">Sign up</button></p>
+    </div>
+   </div>
+
+  <div id="rightPanel" class="flip-container d-flex align-items-center justify-content-center">
+    
+    <div class="front w-10 h-10 d-flex align-items-center justify-content-center">
+      <div id="loginForm" class="text-center ">
+        <div class="form1-group"><p class="padds">
+             <label>User-id</label>
+          <i class="fa fa-user icon" height></i>
+          <input type="text" class="form-control" placeholder="Enter email-id "></p>
+        </div>
+        <div class="form2-group"><p class="padds">
+          <label>Password</label>
+          <i class="fa fa-key icon" ></i>
+          <input type="password" class="form-control"  placeholder="Enter Password" ></p>
+        </div>
+
+        <div class="form-group custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="checkRememberMe">
+          <label class="custom-control-label" for="checkRememberMe">Remember me</label><br><br>
+        </div>
+
+        <div class="form-group"><p class="padd">
+          <button class="btn-connect btn-connect-form m-auto">
+            Login
+          </button></p><br>
+        </div>
+
+        <div class="form-group">
+          <a href="#" color=#000>Forgot password?</a>
+        </div>
+      </div>
+    </div>
+    </p>
+    <div class="back w-100 h-100 d-flex align-items-center justify-content-center">
+      <div id="registerForm" class="text-center">
+        <div class="form3-group"><p class="padds">
+          <label>User-id</label>
+          <i class="fa fa-user icon"></i>
+          <input type="text" class="form-control"  placeholder="Enter email-id"></p>
+        </div>
+        <div class="form4-group"><p class="padds">
+          <label>Password</label>
+          <i class="fa fa-key icon"></i>
+          <input type="password" class="form-control"  placeholder="Enter Password" ></p>
+        </div>
+        <div class="form5-group"><p class="padds">
+          <label>Confirm password</label>
+          <i class="fa fa-key icon"></i><input type="password" class="form-control"  placeholder="Enter Password" ></p>
+        </div><br>
+
+        <div class="form-group"><p class="padd">
+          <button class="btn-connect btn-connect-form m-auto">
+            Register
+          </button></p>
+        </div>
+
+      </div>
+    </div>
+  </div></div>
+</body>
+</html>

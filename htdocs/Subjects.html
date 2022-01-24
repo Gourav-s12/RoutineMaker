@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Routine Genaretion</title><link rel="stylesheet" type="text/css" href="style.css">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   		<link rel="stylesheet" type="text/css" href="style.css">
+ 		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+ 		<meta charset="utf-8">
+ 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: #eee;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+ul.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}   
+      table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center; 
+}
+  table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  position: static;
+  left: 200px;
+}
+th, td {text-decoration-color: #3377ff; 
+  padding: 5px;
+  text-align: left;
+}tr:hover {background-color:#9900ff;}
+
+ </style>
+</head>
+<body>
+
+<!div class="container">
+    <header>
+            <div class="logo">ROUTINE GENARETION</div>
+            <nav>
+                <ul style="float: right;">
+                    <li><a href="#" class="Active">Home</a></li>
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
+        </header><script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+ 		<script>
+ 			$(document).ready(function(){
+ 				$('.menu-toggle').click(function(){
+ 					$('nav').toggleClass('active')
+ 				})
+ 			})
+      function deleteRow(r) {
+  var i = r.parentNode.parentNode.rowIndex;
+  document.getElementById("myTable").deleteRow(i);
+}
+function myCreateFunction() {
+  var table = document.getElementById("myTable");
+  var row = table.insertRow(1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+  var cell6 = row.insertCell(5);
+  var cell7 = row.insertCell(6);
+  var cell8 = row.insertCell(7);
+  cell1.innerHTML = '<p contenteditable="true" style=" text-align:center;">java</p>';
+  cell2.innerHTML = '<p contenteditable="true" style=" text-align:center;">2</p>';
+   cell3.innerHTML = '<div align=center><td style="text-align: center"><input type=radio name="ll"> </td></div>';
+    cell4.innerHTML = '<div align=center><input type=radio name="l3" style=" text-align:center;"> </div>';
+     cell5.innerHTML = '<div align=center><button type="button"  class="btn btn-outline-success" data-toggle="modal" data-target="#myModal">Edit  </button></div>';
+      cell6.innerHTML = '<div align=center><input type="checkbox" align="center" style="float:center;"></div>';
+       cell7.innerHTML = '<p contenteditable="true"style=" text-align:center;">1</p>';
+        cell8.innerHTML = '<input type="button" value="Delete" onclick="deleteRow(this)" class="btn btn-outline-danger">';
+}
+
+ 		</script><div class="boddy">
+
+        <br><br><h1><center>Generate Your Routine</center></h1><ul class="breadcrumb">
+
+ <li><a href="#">Home</a></li>
+  <li>Setup</li>
+</ul>
+<br>
+<br>
+<center><table  id="myTable" style="width:60% ;text-align:center; background-color:#b3ecff;" class="table table-striped table-responsive-md btn-table">
+<center>
+
+<tr style="background-color:#00ace6">
+    <th style="text-align: center" >Sub name</th>
+    <th style="text-align: center">Hrs/Week</th>
+     <th style="text-align: center" colspan="2">Lab/Not lab</th>
+      <th style="text-align: center">Slot preference</th>
+      <th style="text-align: center">Other sub</th>
+      <th style="text-align: center">Sem no</th>
+      <th style="text-align: center">Delete a row</th>
+      </tr>
+	  
+  <tr><td style="text-align: center"><p contenteditable="true">java</p></td><td style="text-align: center"><p contenteditable="true">2</p></td>
+  <td style="text-align: center"><input type=radio name="ll"> </td>
+  <td style="text-align: center"><input type=radio name="ll"> </td>
+  <td style="text-align: center"> <div class="container">
+   
+   <!-- Button to Open the Modal -->
+  <button type="button"  class="btn btn-outline-success" data-toggle="modal" data-target="#myModal">
+    Edit
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Slot preference</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+      <table style="  float: center;"><tr><td style="text-align: center">Monday </td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td>
+  </tr><tr><td style="text-align: center">Tuesday </td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td>
+  </tr><tr><td style="text-align: center">Wednesday </td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td>
+  </tr><tr><td style="text-align: center">Thursday  </td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td>
+  </tr><tr><td style="text-align: center">Friday </td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td>
+  </tr><tr><td style="text-align: center">Saturday </td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td>
+  </tr><tr><td style="text-align: center">Sunday </td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td>
+  </tr>
+   </table>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Ok</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><p contenteditable="true">1</p></td> <td><input type="button" value="Delete" onclick="deleteRow(this)" class="btn btn-outline-danger"></td>
+  </tr><tr align=left><td style="text-align: center"><p contenteditable="true">Operating System</p></td><td style="text-align: center"><p contenteditable="true">2</p></td><td style="text-align: center"><input type=radio name="l2"> </td><td style="text-align: center"><input type=radio name="l2"> </td><td style="text-align: center"> <div class="container">
+   <!-- Button to Open the Modal -->
+  <button type="button" align=left class="btn btn-outline-success" data-toggle="modal" data-target="#myModal">
+    Edit
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Slot preference</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+      <table style="  float: center"><tr><td style="text-align: center">Monday </td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td>
+  </tr><tr><td style="text-align: center">Tuesday </td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td>
+  </tr><tr><td style="text-align: center">Wednesday </td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td>
+  </tr><tr><td style="text-align: center">Thursday  </td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td>
+  </tr><tr><td style="text-align: center">Friday </td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td>
+  </tr><tr><td style="text-align: center">Saturday </td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td>
+  </tr><tr><td style="text-align: center">Sunday </td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td><td style="text-align: center"><input type="checkbox"></td>
+  </tr>
+   </table>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Ok</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div></td><td style="text-align: center"><div class="form-check"><input type="checkbox" class="form-check-input" id="materialChecked2"></div></td><td style="text-align: center"><p contenteditable="true">1</p></td> <td></td>
+  </tr><tfoot> <tr> <th colspan="8" style="text-align: center"><button onclick="myCreateFunction()" class="btn btn-primary btn-lg btn-block">Add row</button></th></tr></tfoot>
+  </table></center><br><br><br><li>
+  <a href="#" class="previous" style="position: relative; left:0px;">&laquo; Previous</a>
+  <a href="#" class="next" style="position: relative; left:1130px;">Next &raquo;</a>
+    </li>
+	<br>
+	
+</body>
+</html>
