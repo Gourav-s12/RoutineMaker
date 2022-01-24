@@ -1,0 +1,10 @@
+Install the following modules in the node folder before running server.js [Navigate to node folder in cmd before installing]:
+npm install mysql
+npm install express
+npm install nodemon
+npm install cors
+npm install atob
+npm install btoa
+
+To run server.js:
+nodemon --experimental-worker server.js   
