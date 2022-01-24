@@ -1,0 +1,11 @@
+INSERT INTO college.user VALUES("deba12@gmail.com","nuub","Deba");
+INSERT INTO college.time_schedule VALUES("CCP Routine 2019","CCP","10:00",6,30,"deba12@gmail.com");
+INSERT INTO college.working_days VALUES("Monday","full","CCP Routine 2019");
+INSERT INTO college.working_days VALUES("Tuesday","half","CCP Routine 2019");
+INSERT INTO college.sem VALUES("I","CCP Routine 2019");
+INSERT INTO college.sem VALUES("II","CCP Routine 2019");
+INSERT INTO college.subject VALUES(null,"Networking","I",3,1,1,1,"..Slot Pref..","CCP Routine 2019");
+INSERT INTO college.subject VALUES(null,"Data Structure","I",3,1,1,1,"..Slot Pref..","CCP Routine 2019");
+INSERT INTO college.teacher VALUES(null,"B.R. Sir",2,"..Time Matirx..","CCP Routine 2019");
+INSERT INTO college.sub_teacher VALUES(1,1,"CCP Routine 2019");
+INSERT INTO college.sub_teacher VALUES(2,1,"CCP Routine 2019");

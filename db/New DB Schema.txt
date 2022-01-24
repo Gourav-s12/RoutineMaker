@@ -1,0 +1,24 @@
+user (email):
+email   password   name
+
+time_schedule (time_schedule_name):
+time_schedule_name   ins_name   start_time   slot_count   recess_duration   fk_email
+
+working_days (days_name, fk_time_schedule_name):
+days_name   full_half   fk_time_schedule_name
+
+sem (sem_no, fk_time_schedule_name):
+sem_no   fk_time_schedule_name
+
+subject (sub_id):
+sub_id   sub_name   fk_sem_no   hrs_per_week   lab_or_not   other_sub   min_slot_length   slot_pref   fk_time_schedule_name
+
+teacher (tr_id):
+tr_id   tr_name   max_continuois_period   time_matrix   fk_time_schedule_name
+
+sub_teacher (fk_sub_id, fk_tr_id):
+fk_sub_id   fk_tr_id   fk_time_schedule_name
+
+
+
+

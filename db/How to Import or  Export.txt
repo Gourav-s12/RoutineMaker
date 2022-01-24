@@ -1,0 +1,11 @@
+To export:
+> Connect to DB or make new DB
+> Click Server > Data Export
+> Check all fields in https://1drv.ms/u/s!AsK6qMZ2ntMFgQFyzODRtbwnLQhO?e=T2XmDa (Export DB.png)
+> Export
+
+To Import:
+> Connect to DB or make new DB
+> Click Server > Data Import
+> Check all fields in https://1drv.ms/u/s!AsK6qMZ2ntMFgQaARIgl21etsQWk?e=YDxhK1 (Import DB.png)
+> Click Start Import
