@@ -1,0 +1,28 @@
+//Calculate Greediness
+for(let i = 0;i < sub.length;i++) { //For every Sub
+    let greediness = 0;
+    for(let j = 0;j < sub[i].slot_pref.length; j++) {
+        greediness += sub[i].slot_pref[j].filter(t => !t).length;
+    }
+    sub[i].greediness = greediness;
+}
+
+for(let i = 0;i < arr.length;i++) { //Day
+    for(let j = 0;i < arr[i].length;i++) { //Sem
+        for(let k = 0;k < arr[i][j].length;k++) { //For every Slot
+            for(let l = 0; l < sub[l].length;l++) {
+                
+            }
+        }
+    }
+}
+//Calculate new Slot Pref from teacher availability
+for(let i = 0;i < sub.length;i++) { //For every Sub
+    for(let j = 0;j < sub[i].slot_pref.length; j++) {
+        for(let k = 0;k < sub[i].slot_pref[j].length; k++) {
+            for (let l = 0; l < subToTeach[i].length; l++) {
+                sub[i].slot_pref[j][k] = sub[i].slot_pref[j][k] && teach[subToTeach[i][l]].time_matirx[j][k];
+            }
+        }
+    }
+}
